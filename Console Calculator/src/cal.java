@@ -1,59 +1,58 @@
-import java.util.Scanner;
-
 /*
  * One of my first program written in Java
  * 
- * Michał Ciołek 2018
+ * Michał Ciołek 2018 - 2019
  */
 
 public class cal {
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) {
 
-		Scanner input = new Scanner(System.in);
-		
-		System.out.println("Kalkulator obsługuje operacje na liczbach stało oraz zmiennoprzecinkowych.");
-		System.out.println();
-		
-		System.out.print("Wprowadz pierwszą liczbe: ");
-		
-		double firstNum = input.nextDouble();
-		
-		System.out.print("Wprowadz drógą liczbe: ");
+		Operations operation = new Operations();
+		Lang pl = new Lang();
 
-		double secondNum = input.nextDouble();
-		
-		System.out.println();
-		System.out.println("Podaj numer operacji:");
-		System.out.println("Dodawanie = 1");
-		System.out.println("Odejmowanie = 2");
-		System.out.println("Mnożenie = 3");
-		System.out.println("Dzielenie = 4");
-		
-		int operation = input.nextInt();
-		
-		System.out.println();
-		
-		switch(operation) {
+		pl.showWelcome();
+
+		pl.showtypefirstNum();
+		operation.setfirstNum();
+		// operation.showfirstNum();
+		pl.showtypesecondNum();
+		operation.setsecondNum();
+		// operation.showsecondNum();
+
+		pl.showtypeOperation();
+		// "There are no answers only choices."
+		operation.setcalOperation();
+		// operation.showcalOperation();
+		int calOperation;
+		calOperation = operation.calOperation;
+
+		switch (calOperation) {
+
 		case 1:
-			System.out.print("Wynik dodawania: ");
-			System.out.print(firstNum + secondNum);
+			pl.showtextadditionScore();
+			operation.addition();
 			break;
+
 		case 2:
-			System.out.print("Wynik odejmowania: ");
-			System.out.print(firstNum - secondNum);
+			pl.showtextsubtractionScore();
+			operation.subtraction();
 			break;
+
 		case 3:
-			System.out.print("Wynik monożenia: ");
-			System.out.print(firstNum * secondNum);
+			pl.showtextmultiplicationScore();
+			operation.multiplication();
 			break;
+
 		case 4:
-			System.out.print("Wynik dzielenia: ");
-			System.out.print(firstNum / secondNum);
+			pl.showtextdivisionScore();
+			operation.division();
 			break;
+
 		default:
-			System.out.print("Nie obsługiwana operacja!");
-		
+			pl.showtextunavailableOperation();
+
 		}
+
 	}
 }
